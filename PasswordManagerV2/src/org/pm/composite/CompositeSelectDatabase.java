@@ -20,7 +20,7 @@ public class CompositeSelectDatabase extends Composite {
 	 * GUI Field
 	 */
 	private Label selDBLbl;
-	private ArrayList<Composite> dbNameCompoArr;
+	private ArrayList<CompositeDatabaseFile> dbNameCompoArr;
 
 	/*
 	 * Public Property
@@ -30,7 +30,7 @@ public class CompositeSelectDatabase extends Composite {
 	public static int height;
 	public static int posX;
 	public static int posY;
-	
+
 	/*
 	 * Static Field
 	 */
@@ -51,11 +51,11 @@ public class CompositeSelectDatabase extends Composite {
 		posX = PasswordManager.width / 5;
 		posY = PasswordManager.height / 5;
 		db = PasswordManager.getDB();
-		dbNameCompoArr = new ArrayList<Composite>();
+		dbNameCompoArr = new ArrayList<CompositeDatabaseFile>();
 	}
 
 	/**
-	 * Creater CompositeNewDatabase: Set personal property(ex:
+	 * Creater CompositeNewDatabase : Set personal property(ex:
 	 * width,height,posX,posY,image resource)
 	 * 
 	 * @param parent
@@ -70,15 +70,22 @@ public class CompositeSelectDatabase extends Composite {
 		selDBLbl.setBounds(width * 1 / 5, 20, 200, 20);
 		selDBLbl.setFont(new Font(this.getDisplay(), "Arial", 16, SWT.BOLD));
 		addPaintListener(new PaintListener() {
-			
+
 			@Override
 			public void paintControl(PaintEvent pe) {
 				selDBLbl.setText(Messages.getString("SelDatabaseComposite.title") + " : count " + db.size());
-				for(int i=dbNameCompoArr.size();i<db.size();i++){
-					//dbNameCompoArr.add(new Label(CompositeSelectDatabase.getSelf(),SWT.NONE));
-					//dbNameCompoArr.get(i).setText(db.get(i).getName());
-					//dbNameCompoArr.get(i).setBounds(50, height * 2 / 5, 100, 20);
-					//dbNameCompoArr.get(i).setBackground(PmColor.COMP3);
+				for (int i = dbNameCompoArr.size(); i < db.size(); i++) {
+					if (dbNameCompoArr.size() == 0) {
+						dbNameCompoArr.add(new CompositeDatabaseFile(compoSelDB, SWT.NONE, db.get(i)));
+						dbNameCompoArr.get(i).setBounds(dbNameCompoArr.get(i).posX, dbNameCompoArr.get(i).posY,
+								dbNameCompoArr.get(i).width, dbNameCompoArr.get(i).height);
+					} else {
+						dbNameCompoArr.add(new CompositeDatabaseFile(compoSelDB, SWT.NONE, db.get(i),
+								dbNameCompoArr.get(i - 1).posX,
+								dbNameCompoArr.get(i - 1).posY + dbNameCompoArr.get(i - 1).height));
+						dbNameCompoArr.get(i).setBounds(dbNameCompoArr.get(i).posX, dbNameCompoArr.get(i).posY,
+								dbNameCompoArr.get(i).width, dbNameCompoArr.get(i).height);
+					}
 				}
 			}
 		});

@@ -34,7 +34,6 @@ public class Composite01_01 extends Composite {
 		height = PasswordManager.height*9/12/2;
 		posX = PasswordManager.width/16;
 		posY = PasswordManager.height/12;
-		
 	}
 	
 	/**
