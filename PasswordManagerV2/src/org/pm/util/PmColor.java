@@ -17,6 +17,8 @@ public class PmColor {
 	public static Color SKY = new Color(null, 0x66, 0xCC, 0xFF);
 	public static Color LIGHTYELLOW = new Color(null, 0xFA, 0xF4, 0xC0);
 	public static Color GLAY = new Color(null, 220, 220, 220);
+	public static Color DAISY = new Color(null,217,184,158);
+	public static Color VIOLET = new Color(null,204,194,217);
 
 	/*
 	 * public static Color COMP1 = new Color(null, 0x2C, 0x3E, 0x50); public
