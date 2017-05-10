@@ -30,9 +30,25 @@ public class Database {
 		recordArr.add(newRecord);
 	}
 
-	public Record getRecord(int index) {
+	/**
+	 * getRecord fisrt model : not use
+	 * 
+	 * @param index
+	 * @return
+	 */
+	/*public Record getRecord(int index) {
 		Record tmp = recordArr.get(index);
 		return new Record(tmp.getID(), tmp.getPassword(), tmp.getURL());
+	}*/
+	
+	/**
+	 * getRecord second model : use
+	 * 
+	 * @param index
+	 * @return
+	 */
+	public Record getRecord(int index) {
+		return recordArr.get(index);
 	}
 
 	public int Size() {

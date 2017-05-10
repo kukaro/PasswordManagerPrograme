@@ -1,8 +1,6 @@
 package org.pm.composite.showdb;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -20,6 +18,7 @@ public class CompositeShowDatabase extends Composite {
 	private static CompositeShowDatabaseTableBody compoTblBody;
 	private static CompositeShDBClose compoShDBClose;
 	private static CompositeShDBAdd compoShDBAdd;
+	private static CompositeShDBEdit compoShDBEdit;
 
 	/*
 	 * Public Property
@@ -82,6 +81,10 @@ public class CompositeShowDatabase extends Composite {
 		compoShDBAdd = new CompositeShDBAdd(this, SWT.NONE);
 		compoShDBAdd.setBounds(CompositeShDBAdd.posX, CompositeShDBAdd.posY, CompositeShDBAdd.width,
 				CompositeShDBAdd.height);
+		compoShDBEdit = new CompositeShDBEdit(this, SWT.NONE);
+		compoShDBEdit.setBounds(CompositeShDBEdit.posX, CompositeShDBEdit.posY, CompositeShDBEdit.width,
+				CompositeShDBEdit.height);
+		
 	}
 
 	public static CompositeShowDatabase getSelf() {

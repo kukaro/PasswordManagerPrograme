@@ -26,4 +26,14 @@ public class Record {
 	public String getURL(){
 		return URL;
 	}
+	
+	public void setID(String ID){
+		this.ID = ID;
+	}
+	public void setPassword(String Password){
+		this.Password = Password;
+	}
+	public void setURL(String URL){
+		this.URL = URL;
+	}
 }

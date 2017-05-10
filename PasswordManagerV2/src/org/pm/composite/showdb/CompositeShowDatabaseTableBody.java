@@ -50,7 +50,7 @@ public class CompositeShowDatabaseTableBody extends ScrolledComposite {
 		compoDBTRArr = new ArrayList<CompositeShowDatabaseTableRow>();
 		for (int i = 0; i < db.Size(); i++) {
 			compoDBTRArr.add(new CompositeShowDatabaseTableRow(CompositeShowDatabaseTableBody.getSelf(), SWT.NONE,
-					db.getRecord(i)));
+					CompositeShowDatabase.getDB().getRecord(i)));
 		}
 		Repose();
 	}
@@ -72,5 +72,9 @@ public class CompositeShowDatabaseTableBody extends ScrolledComposite {
 						compoDBTRArr.get(i).posY + i * compoDBTRArr.get(i).height, compoDBTRArr.get(i).width,
 						compoDBTRArr.get(i).height);
 			}
+	}
+	
+	static ArrayList<CompositeShowDatabaseTableRow> getCompoDBTRArr(){
+		return compoDBTRArr;
 	}
 }
