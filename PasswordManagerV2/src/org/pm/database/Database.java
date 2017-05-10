@@ -61,7 +61,10 @@ public class Database {
 	public String getPassword(){
 		return password;
 	}
-	public boolean changed(){
+	public boolean getChanged(){
 		return changed;
+	}
+	public void invChanged(){
+		changed = !changed;
 	}
 }

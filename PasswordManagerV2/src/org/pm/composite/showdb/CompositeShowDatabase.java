@@ -19,6 +19,7 @@ public class CompositeShowDatabase extends Composite {
 	private static CompositeShDBClose compoShDBClose;
 	private static CompositeShDBAdd compoShDBAdd;
 	private static CompositeShDBEdit compoShDBEdit;
+	private static CompositeShDBExport compoShDBExport;
 
 	/*
 	 * Public Property
@@ -84,6 +85,9 @@ public class CompositeShowDatabase extends Composite {
 		compoShDBEdit = new CompositeShDBEdit(this, SWT.NONE);
 		compoShDBEdit.setBounds(CompositeShDBEdit.posX, CompositeShDBEdit.posY, CompositeShDBEdit.width,
 				CompositeShDBEdit.height);
+		compoShDBExport = new CompositeShDBExport(this, SWT.NONE);
+		compoShDBExport.setBounds(CompositeShDBExport.posX, CompositeShDBExport.posY, CompositeShDBExport.width,
+				CompositeShDBExport.height);
 		
 	}
 

@@ -9,7 +9,7 @@ import com.opencsv.CSVWriter;
  
  
 public class CSVWrite {
- 
+	private CSVWriter cw;
     private String filename;
  
     public CSVWrite(String fileName) {
@@ -18,7 +18,7 @@ public class CSVWrite {
  
     public void writeCsv(List<String[]> data) {
         try {
-            CSVWriter cw = new CSVWriter(new FileWriter(filename), ',', '"');
+            cw = new CSVWriter(new FileWriter(filename), ',', '"');
             Iterator<String[]> it = data.iterator();
             try {
                 while (it.hasNext()) {
