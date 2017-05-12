@@ -23,8 +23,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.pm.composite.Composite01_02;
 import org.pm.database.Database;
 import org.pm.database.Record;
+import org.pm.main.PasswordManager;
 import org.pm.util.AES256Util;
 import org.pm.util.CSVRead;
+import org.pm.util.SHA256;
 
 public class CompositePasswordVerifyAdd extends Composite {
 	/*
@@ -40,7 +42,6 @@ public class CompositePasswordVerifyAdd extends Composite {
 	private static InputStream is;
 	private static ImageData id;
 	private static AES256Util aes;
-	private static boolean match;
 
 	/*
 	 * Instance Field
@@ -82,29 +83,31 @@ public class CompositePasswordVerifyAdd extends Composite {
 
 			@Override
 			public void mouseUp(MouseEvent me) {
+				String pw = CompositePasswordVerify.getPassword();
 				try {
-					aes = new AES256Util(CompositePasswordVerify.getPassword());
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
+					aes = new AES256Util(SHA256.encrypt(pw));
+				} catch (UnsupportedEncodingException e1) {
+					e1.printStackTrace();
 				}
 				CSVRead csvreader = new CSVRead(Composite01_02.getFilepath());
 				List<String[]> data = csvreader.readCsv();
 				try {
-					if (aes.aesEncode(CompositePasswordVerify.getPassword()).equals(data.get(0)[2])) {
-						if (match == true) {
-							csvreader = new CSVRead(Composite01_02.getFilepath());
-							Database db = null;
-							for (int i = 0; i < data.size(); i++) {
-								if (i == 0) {
-									db = new Database(aes.aesDecode(data.get(i)[0]), aes.aesDecode(data.get(i)[1]));
-									System.out.println(data.get(i)[0] + data.get(i)[1]);
-								} else {
-									db.AddRecord(new Record(aes.aesDecode(data.get(i)[0]),
-											aes.aesDecode(data.get(i)[1]), aes.aesDecode(data.get(i)[2])));
-									System.out.println(data.get(i)[0] + data.get(i)[1] + data.get(i)[2]);
-								}
+
+					if (aes.aesEncode(SHA256.encrypt(pw)).equals(data.get(0)[1])) {
+						System.out.println(aes.aesEncode(SHA256.encrypt(pw)).equals(data.get(0)[1]));
+						csvreader = new CSVRead(Composite01_02.getFilepath());
+						Database db = null;
+						for (int i = 0; i < data.size(); i++) {
+							if (i == 0) {
+								db = new Database(aes.aesDecode(data.get(i)[0]), aes.aesDecode(data.get(i)[1]));
+								System.out.println(data.get(i)[0] + data.get(i)[1]);
+							} else {
+								db.AddRecord(new Record(aes.aesDecode(data.get(i)[0]), aes.aesDecode(data.get(i)[1]),
+										aes.aesDecode(data.get(i)[2])));
+								System.out.println(data.get(i)[0] + data.get(i)[1] + data.get(i)[2]);;
 							}
 						}
+						PasswordManager.getDB().add(db);
 					} else {
 						Composite01_02.setMatch(false);
 					}
