@@ -18,6 +18,18 @@ public class Database {
 		this.changed = true;
 		recordCounter = 0;
 	}
+	public Database(String name, String password,boolean load) {
+		this.name = name;
+		if(load==true){
+			this.password = password;
+		}
+		else{
+			this.password = SHA256.encrypt(password);
+		}
+		this.recordArr = new ArrayList<Record>();
+		this.changed = true;
+		recordCounter = 0;
+	}
 
 	/**
 	 * Must insert to new Instance.

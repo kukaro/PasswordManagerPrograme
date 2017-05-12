@@ -1,7 +1,15 @@
 package org.pm.composite.showdb;
 
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
@@ -13,6 +21,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Composite;
 import org.pm.database.Database;
+import org.pm.util.AES256Util;
 import org.pm.util.CSVWrite;
 
 public class CompositeShDBExport extends Composite {
@@ -36,6 +45,7 @@ public class CompositeShDBExport extends Composite {
 	private GC gc;
 	private Image img;
 	private CSVWrite csvwriter;
+	private AES256Util aes;
 
 	/*
 	 * Initialize Block
@@ -71,14 +81,8 @@ public class CompositeShDBExport extends Composite {
 
 			@Override
 			public void mouseUp(MouseEvent me) {
-				Database temp = CompositeShowDatabase.getDB();
-				csvwriter = new CSVWrite(temp.getName()+".csv");
-				ArrayList<String[]> data = new ArrayList<String[]>();
-				data.add(new String[]{temp.getName(),temp.getPassword()});
-				for(int i=0;i<temp.Size();i++){
-					data.add(new String[]{temp.getRecord(i).getID(),temp.getRecord(i).getPassword(),temp.getRecord(i).getURL()});
-				}
-				csvwriter.writeCsv(data);
+				//UnuseAESEvent();
+				UseAESEvent();
 			}
 
 			@Override
@@ -89,5 +93,47 @@ public class CompositeShDBExport extends Composite {
 			public void mouseDoubleClick(MouseEvent arg0) {
 			}
 		});
+	}
+
+	private void UnuseAESEvent() {
+		Database temp = CompositeShowDatabase.getDB();
+		csvwriter = new CSVWrite(temp.getName() + ".csv");
+		ArrayList<String[]> data = new ArrayList<String[]>();
+		data.add(new String[] { temp.getName(), temp.getPassword() });
+		for (int i = 0; i < temp.Size(); i++) {
+			data.add(new String[] { temp.getRecord(i).getID(), temp.getRecord(i).getPassword(),
+					temp.getRecord(i).getURL() });
+		}
+		csvwriter.writeCsv(data);
+	}
+	
+	private void UseAESEvent(){
+		Database temp = CompositeShowDatabase.getDB();
+		csvwriter = new CSVWrite(temp.getName() + ".csv");
+		ArrayList<String[]> data = new ArrayList<String[]>();
+		try {
+			aes = new AES256Util(temp.getPassword());
+			data.add(new String[] { aes.aesEncode(temp.getName()), aes.aesEncode(temp.getPassword()) });
+			for (int i = 0; i < temp.Size(); i++) {
+				data.add(new String[] { aes.aesEncode(temp.getRecord(i).getID()), aes.aesEncode(temp.getRecord(i).getPassword()),
+						aes.aesEncode(temp.getRecord(i).getURL()) });
+			}
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+		} catch (InvalidAlgorithmParameterException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		}
+		csvwriter.writeCsv(data);
 	}
 }

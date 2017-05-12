@@ -21,6 +21,7 @@ import org.pm.composite.Composite02_02;
 import org.pm.composite.CompositeNewDatabase;
 import org.pm.composite.CompositeSelectDatabase;
 import org.pm.composite.CompositeShadow;
+import org.pm.composite.PasswordVerify.CompositePasswordVerify;
 import org.pm.composite.addRecord.CompositeAddRecord;
 import org.pm.composite.showdb.CompositeShowDatabase;
 import org.pm.database.Database;
@@ -56,6 +57,7 @@ public class PasswordManager extends ApplicationWindow {
 	private static CompositeSelectDatabase compoSD;
 	private static CompositeShowDatabase compoShD;
 	private static CompositeAddRecord compoAR;
+	private static CompositePasswordVerify compoPV;
 	private static Composite01_01 compo0101;
 	private static Composite01_02 compo0102;
 	private static Composite02_01 compo0201;
@@ -64,6 +66,7 @@ public class PasswordManager extends ApplicationWindow {
 	private static CompositeShadow composSD;
 	private static CompositeShadow composShD;
 	private static CompositeShadow composAR;
+	private static CompositeShadow composPV;
 	private static CompositeShadow compos0101;
 	private static CompositeShadow compos0102;
 	private static CompositeShadow compos0201;
@@ -105,6 +108,13 @@ public class PasswordManager extends ApplicationWindow {
 		/*
 		 * Global Composite
 		 */
+		compoPV = new CompositePasswordVerify(container, SWT.NONE);
+		compoPV.setBounds(compoPV.posX, compoPV.posY, compoPV.width, compoPV.height);
+		compoPV.setVisible(false);
+		composPV = new CompositeShadow(container, SWT.NONE);
+		composPV.setBounds(compoPV.posX - PmValue.SHADOW, compoPV.posY - PmValue.SHADOW,
+				compoPV.width + PmValue.SHADOW * 2, compoPV.height + PmValue.SHADOW * 2);
+		composPV.setVisible(false);
 		compoAR = new CompositeAddRecord(container, SWT.NONE);
 		compoAR.setBounds(compoAR.posX, compoAR.posY, compoAR.width, compoAR.height);
 		compoAR.setVisible(false);
@@ -133,7 +143,6 @@ public class PasswordManager extends ApplicationWindow {
 		composSD.setBounds(compoSD.posX - PmValue.SHADOW, compoSD.posY - PmValue.SHADOW,
 				compoSD.width + PmValue.SHADOW * 2, compoSD.height + PmValue.SHADOW * 2);
 		composSD.setVisible(false);
-
 		/*
 		 * Instance Composite
 		 */
@@ -284,6 +293,13 @@ public class PasswordManager extends ApplicationWindow {
 
 	public static CompositeShadow getCompositeAddRecordShadow() {
 		return composAR;
+	}
+	public static CompositePasswordVerify getCompositePasswordVerify() {
+		return compoPV;
+	}
+
+	public static CompositeShadow getCompositePasswordVerifyShadow() {
+		return composPV;
 	}
 	public static void setDB(String ID, String Password) {
 		db.add(new Database(ID, Password));

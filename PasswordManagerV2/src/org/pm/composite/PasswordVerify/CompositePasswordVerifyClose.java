@@ -1,4 +1,4 @@
-package org.pm.composite.showdb;
+package org.pm.composite.PasswordVerify;
 
 import java.io.InputStream;
 
@@ -13,7 +13,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Composite;
 import org.pm.main.PasswordManager;
 
-public class CompositeShDBClose extends Composite {
+public class CompositePasswordVerifyClose extends Composite {
 
 	/*
 	 * Public Property
@@ -39,10 +39,10 @@ public class CompositeShDBClose extends Composite {
 	 * Initialize Block
 	 */
 	{
-		width = CompositeShowDatabase.width * 1 / 6;
-		height = CompositeShowDatabase.height * 1 / 6;
-		posX = CompositeShowDatabase.width * 8 / 10 - CompositeShowDatabase.width * 1 / 30;
-		posY = CompositeShowDatabase.height * 3 / 4;
+		width = CompositePasswordVerify.width * 1 / 6;
+		height = CompositePasswordVerify.height * 1 / 6;
+		posX = CompositePasswordVerify.width * 8 / 10 - CompositePasswordVerify.width * 1 / 30;
+		posY = CompositePasswordVerify.height * 3 / 4;
 		is = getClass().getResourceAsStream("/org/pm/resource/Xsign.png");
 		id = new ImageData(is).scaledTo(width, height);
 	}
@@ -53,7 +53,7 @@ public class CompositeShDBClose extends Composite {
 	 * @param parent
 	 * @param style
 	 */
-	CompositeShDBClose(Composite parent, int style) {
+	CompositePasswordVerifyClose(Composite parent, int style) {
 		super(parent, style);
 		setBackground(this.getDisplay().getSystemColor(SWT.COLOR_TRANSPARENT));
 		addPaintListener(new PaintListener() {
@@ -69,9 +69,9 @@ public class CompositeShDBClose extends Composite {
 			
 			@Override
 			public void mouseUp(MouseEvent me) {
-				//CompositeShowDatabaseTableBody.DisposeArr();
-				PasswordManager.getCompositeShowDatabase().setVisible(!PasswordManager.getCompositeShowDatabase().getVisible());
-				PasswordManager.getCompositeShowDatabaseShadow().setVisible(!PasswordManager.getCompositeShowDatabaseShadow().getVisible());
+				CompositePasswordVerify.CleanTxt();
+				PasswordManager.getCompositePasswordVerify().setVisible(!PasswordManager.getCompositePasswordVerify().getVisible());
+				PasswordManager.getCompositePasswordVerifyShadow().setVisible(!PasswordManager.getCompositePasswordVerifyShadow().getVisible());
 			}
 			
 			@Override

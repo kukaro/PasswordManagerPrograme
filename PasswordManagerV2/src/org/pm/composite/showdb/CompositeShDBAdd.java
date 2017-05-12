@@ -11,7 +11,6 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Composite;
-import org.pm.action.NewDatabaseAction;
 import org.pm.main.PasswordManager;
 
 public class CompositeShDBAdd extends Composite {
