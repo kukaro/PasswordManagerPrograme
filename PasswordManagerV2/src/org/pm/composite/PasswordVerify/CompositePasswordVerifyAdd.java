@@ -99,7 +99,7 @@ public class CompositePasswordVerifyAdd extends Composite {
 						Database db = null;
 						for (int i = 0; i < data.size(); i++) {
 							if (i == 0) {
-								db = new Database(aes.aesDecode(data.get(i)[0]), aes.aesDecode(data.get(i)[1]));
+								db = new Database(aes.aesDecode(data.get(i)[0]), aes.aesDecode(data.get(i)[1]),true);
 								System.out.println(data.get(i)[0] + data.get(i)[1]);
 							} else {
 								db.AddRecord(new Record(aes.aesDecode(data.get(i)[0]), aes.aesDecode(data.get(i)[1]),
