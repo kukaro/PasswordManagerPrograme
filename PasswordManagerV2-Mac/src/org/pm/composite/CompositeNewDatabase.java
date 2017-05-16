@@ -1,5 +1,7 @@
 package org.pm.composite;
 
+import java.io.InputStream;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
@@ -8,6 +10,7 @@ import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -54,12 +57,15 @@ public class CompositeNewDatabase extends Composite {
 	 * Instance Field
 	 */
 	private GC gc;
-	private Image imgOK;
-	private Image imgNO;
-	private Image img;
-	private Image imgScale;
+	private Image imgTitle;
 	private Image imgScaleOKNO;
 	private boolean passwordMatch;
+	private InputStream isOK;
+	private InputStream isNO;
+	private InputStream isTitle;
+	private ImageData idOK;
+	private ImageData idNO;
+	private ImageData idTitle;
 	
 
 	/*
@@ -71,6 +77,12 @@ public class CompositeNewDatabase extends Composite {
 		posX = PasswordManager.width / 5;
 		posY = PasswordManager.height / 5;
 		zx = new Zxcvbn();
+		isOK = getClass().getResourceAsStream("/org/pm/resource/ok.png");
+		isNO = getClass().getResourceAsStream("/org/pm/resource/no.png");
+		isTitle = getClass().getResourceAsStream("/org/pm/resource/NewDB.png");
+		idOK = new ImageData(isOK).scaledTo(width * 1 / 6, height * 1 / 6);
+		idNO = new ImageData(isNO).scaledTo(width * 1 / 6, height * 1 / 6);
+		idTitle = new ImageData(isTitle).scaledTo(width * 2 / 5, height * 2 / 5);;
 	}
 
 	/**
@@ -119,9 +131,13 @@ public class CompositeNewDatabase extends Composite {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				if (passwordTxt.getText().equals(passwordVerifiedTxt.getText())) {
+					st = zx.measure(passwordTxt.getText());
+					ranki = st.getScore();
 					passwordMatch = true;
 					compoNewDB.redraw();
 				} else {
+					st = zx.measure(passwordTxt.getText());
+					ranki = st.getScore();
 					passwordMatch = false;
 					compoNewDB.redraw();
 				}
@@ -139,9 +155,13 @@ public class CompositeNewDatabase extends Composite {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				if (passwordTxt.getText().equals(passwordVerifiedTxt.getText())) {
+					st = zx.measure(passwordTxt.getText());
+					ranki = st.getScore();
 					passwordMatch = true;
 					compoNewDB.redraw();
 				} else {
+					st = zx.measure(passwordTxt.getText());
+					ranki = st.getScore();
 					passwordMatch = false;
 					compoNewDB.redraw();
 				}
@@ -156,14 +176,9 @@ public class CompositeNewDatabase extends Composite {
 			@Override
 			public void paintControl(PaintEvent pe) {
 				gc = pe.gc;
-				img = new Image(pe.display, "src/org/pm/resource/NewDB.png");
-				imgOK = new Image(pe.display, "src/org/pm/resource/ok.png");
-				imgNO = new Image(pe.display, "src/org/pm/resource/no.png");
-				imgScale = new Image(pe.display, img.getImageData().scaledTo(width * 2 / 5, height * 2 / 5));
+				imgTitle = new Image(pe.display, idTitle);
 				if (passwordMatch == true) {
-					imgScaleOKNO = new Image(pe.display, imgOK.getImageData().scaledTo(width * 1 / 6, height * 1 / 6));
-					st = zx.measure(passwordTxt.getText());
-					ranki = st.getScore();
+					imgScaleOKNO = new Image(pe.display, idOK);
 					if (ranki == 0)
 						ranks = "Weak";
 					else if (ranki == 1)
@@ -176,15 +191,14 @@ public class CompositeNewDatabase extends Composite {
 						ranks = "Very strong";
 					if (ranki == 0) {
 						stateLbl.setText("\nPassword is Matched\nBut strength is week");
-						imgScaleOKNO = new Image(pe.display,
-								imgNO.getImageData().scaledTo(width * 1 / 6, height * 1 / 6));
+						imgScaleOKNO = new Image(pe.display,idNO);
 					} else
 						stateLbl.setText("\nPassword is matched\nStrength : " + ranks);
 				} else {
-					imgScaleOKNO = new Image(pe.display, imgNO.getImageData().scaledTo(width * 1 / 6, height * 1 / 6));
+					imgScaleOKNO = new Image(pe.display, idNO);
 					stateLbl.setText("\nPassword miss matching\nMatching Please");
 				}
-				gc.drawImage(imgScale, 50, 0);
+				gc.drawImage(imgTitle, 50, 0);
 				gc.drawImage(imgScaleOKNO, width / 15, height * 3 / 4);
 			}
 		});
