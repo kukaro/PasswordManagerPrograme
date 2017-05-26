@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.pm.action.LoadDatabaseAction;
 import org.pm.action.NewDatabaseAction;
+import org.pm.action.TranslateAction;
 import org.pm.composite.Composite01_01;
 import org.pm.composite.Composite01_02;
 import org.pm.composite.Composite02_01;
@@ -42,6 +43,7 @@ public class PasswordManager extends ApplicationWindow {
 	private static PasswordManager app;
 	private static NewDatabaseAction newDatabaseAction;
 	private static LoadDatabaseAction loadDatabaseAction;
+	private static TranslateAction translateAction;
 	private static ArrayList<Database> db;
 
 	/*
@@ -176,6 +178,7 @@ public class PasswordManager extends ApplicationWindow {
 	private void createActions() {
 		newDatabaseAction = new NewDatabaseAction();
 		loadDatabaseAction = new LoadDatabaseAction();
+		translateAction = new TranslateAction();
 	}
 
 	/**
@@ -188,16 +191,19 @@ public class PasswordManager extends ApplicationWindow {
 		MenuManager menuManager = new MenuManager(Messages.getString("PasswordManager.Menu.Menu.Label"));
 		MenuManager menuManagerDatabase = new MenuManager(Messages.getString("PasswordManager.Menu.Database.Label"));
 		MenuManager menuManagerEdit = new MenuManager(Messages.getString("PasswordManager.Menu.Edit.Label"));
+		MenuManager menuManagerTrans = new MenuManager(Messages.getString("PasswordManager.Menu.Trans.Label"));
 		/*
 		 * Make Menu
 		 */
 		menuManager.add(menuManagerDatabase);
 		menuManager.add(menuManagerEdit);
+		menuManager.add(menuManagerTrans);
 		/*
 		 * Make Menu Detail
 		 */
 		menuManagerDatabase.add(newDatabaseAction);
 		menuManagerDatabase.add(loadDatabaseAction);
+		menuManagerDatabase.add(translateAction);
 		return menuManager;
 	}
 
