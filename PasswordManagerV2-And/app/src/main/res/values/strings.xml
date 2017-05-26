@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">PasswordManager</string>
+    <string name="Composite0">Back</string>
+    <string name="Composite1">NewDatabase</string>
+    <string name="Composite2">OpenDatabase</string>
+    <string name="Composite3">SelectDatabase</string>
+    <string name="Composite4">Preference</string>
+
+    <string name="NewDB_name">New Database</string>
+    <string name="NewDB_ID_title">ID</string>
+    <string name="NewDB_Pwd_title">Password</string>
+    <string name="NewDB_PwdV_title">Password Verify</string>
+
+    <string name="SelDB_name">Select Database</string>
+
+    <string name="ShowDB_name">Show Record</string>
+    <string name="ShowDB_ID">ID</string>
+    <string name="ShowDB_Pwd">Password</string>
+    <string name="ShowDB_URL">URL</string>
+
+    <string name="AddRecord_name">Add Record</string>
+    <string name="AddRecord_ID_title">ID</string>
+    <string name="AddRecord_Pwd_title">Password</string>
+    <string name="AddRecord_URL_title">URL</string>
+</resources>

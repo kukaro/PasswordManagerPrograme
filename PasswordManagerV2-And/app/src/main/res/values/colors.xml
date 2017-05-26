@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="Composite00">#BACDE4</color>
+    <color name="Composite01">#E5B9B9</color>
+    <color name="Composite02">#2A7676</color>
+    <color name="Composite03">#604B7A</color>
+    <color name="Composite04">#588FD3</color>
+    <color name="dark_round_color">#192B45</color>
+</resources>
