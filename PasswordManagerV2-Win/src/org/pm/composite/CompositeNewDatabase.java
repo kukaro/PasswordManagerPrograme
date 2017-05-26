@@ -97,10 +97,11 @@ public class CompositeNewDatabase extends Composite {
 		setBackground(PmColor.GLAY);
 		setLayout(null);
 		compoNewDB = this;
-		newDBLbl = new Label(this, SWT.CENTER);
+		newDBLbl = new Label(this, SWT.LEFT);
 		newDBLbl.setText(Messages.getString("NewDatabaseComposite.title"));
-		newDBLbl.setBounds(width * 2 / 5 + 20, 20, 120, 20);
+		newDBLbl.setBounds(width * 2 / 5 + 20, 20, 150, 20);
 		newDBLbl.setFont(new Font(this.getDisplay(), "Arial", 16, SWT.BOLD));
+		newDBLbl.setBackground(PmColor.GLAY);
 		nameLbl = new Label(this, SWT.CENTER);
 		nameLbl.setText(Messages.getString("NewDatabaseComposite.name"));
 		nameLbl.setBounds(50, height * 2 / 5, 100, 20);
@@ -116,6 +117,7 @@ public class CompositeNewDatabase extends Composite {
 		stateLbl = new Label(this, SWT.CENTER);
 		stateLbl.setBounds(width * 2 / 10, height * 3 / 4, width * 2 / 5, height * 1 / 5);
 		stateLbl.setText("\nInsert Password\nPlease");
+		stateLbl.setBackground(PmColor.GLAY);
 		ndbSubmitComp = new CompositeNDBSubmit(this, SWT.NONE);
 		ndbSubmitComp.setBounds(CompositeNDBSubmit.posX, CompositeNDBSubmit.posY, CompositeNDBSubmit.width, CompositeNDBSubmit.height);
 		ndbCloseComp = new CompositeNDBClose(this, SWT.NONE);
@@ -224,5 +226,12 @@ public class CompositeNewDatabase extends Composite {
 	
 	String getPassStrength(){
 		return ranks;
+	}
+	
+	public void setAllText(){
+		newDBLbl.setText(Messages.getString("NewDatabaseComposite.title"));
+		nameLbl.setText(Messages.getString("NewDatabaseComposite.name"));
+		passwordLbl.setText(Messages.getString("NewDatabaseComposite.Password"));
+		passwordVerifiedLbl.setText(Messages.getString("NewDatabaseComposite.Password.Verify"));
 	}
 }

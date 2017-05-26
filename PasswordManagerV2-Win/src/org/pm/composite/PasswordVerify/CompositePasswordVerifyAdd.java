@@ -117,6 +117,9 @@ public class CompositePasswordVerifyAdd extends Composite {
 					e.printStackTrace();
 				}
 				CompositePasswordVerify.CleanTxt();
+				PasswordManager.getCompositePasswordVerify().setVisible(!PasswordManager.getCompositePasswordVerify().getVisible());
+				PasswordManager.getCompositePasswordVerifyShadow().setVisible(!PasswordManager.getCompositePasswordVerifyShadow().getVisible());
+			
 			}
 
 			@Override

@@ -50,4 +50,8 @@ public class CompositeShowDatabaseTitle extends Composite {
 		this.title = title;
 		titleLbl.setText(Messages.getString("CompositeShowDatabaseTitle.title") + " : " + this.title);
 	}
+	
+	public void setAllText(){
+		titleLbl.setText(Messages.getString("CompositeShowDatabaseTitle.title") + " : " + title);
+	}
 }

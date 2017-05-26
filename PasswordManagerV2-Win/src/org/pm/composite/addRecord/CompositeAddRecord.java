@@ -1,18 +1,9 @@
 package org.pm.composite.addRecord;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.pm.composite.showdb.CompositeShDBClose;
-import org.pm.database.Database;
 import org.pm.main.PasswordManager;
 import org.pm.util.PmColor;
 
@@ -33,22 +24,11 @@ public class CompositeAddRecord extends Composite {
 	/*
 	 * Public Property
 	 */
-	public static CompositeAddRecord compoAR;
+	public static CompositeAddRecord self;
 	public static int width;
 	public static int height;
 	public static int posX;
 	public static int posY;
-
-	/*
-	 * Static Field
-	 */
-	private static Database db;
-
-	/*
-	 * Instance Field
-	 */
-	private GC gc;
-	private Image img;
 
 	/*
 	 * Initialize Block
@@ -71,7 +51,7 @@ public class CompositeAddRecord extends Composite {
 		super(parent, style);
 		setBackground(PmColor.VIOLET);
 		setLayout(null);
-		compoAR = this;
+		self = this;
 		IDLbl = new Label(this, SWT.CENTER);
 		IDLbl.setBounds(width * 1 / 8, height * 5 / 20, width * 2 / 8, height * 2 / 20);
 		IDLbl.setText(Messages.getString("CompositeAddRecord.ID"));
@@ -105,7 +85,7 @@ public class CompositeAddRecord extends Composite {
 	}
 
 	static CompositeAddRecord getSelf() {
-		return compoAR;
+		return self;
 	}
 	
 	public static String getID(){
@@ -125,5 +105,9 @@ public class CompositeAddRecord extends Composite {
 		passwordTxt.setText("");
 		URLTxt.setText("");
 	}
-	
+	public void setAllText(){
+		IDLbl.setText(Messages.getString("CompositeAddRecord.ID"));
+		passwordLbl.setText(Messages.getString("CompositeAddRecord.password"));
+		URLLbl.setText(Messages.getString("CompositeAddRecord.URL"));
+	}
 }

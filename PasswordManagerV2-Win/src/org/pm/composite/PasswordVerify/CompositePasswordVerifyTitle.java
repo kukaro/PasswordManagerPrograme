@@ -43,4 +43,7 @@ public class CompositePasswordVerifyTitle extends Composite {
 		titleLbl.setText(Messages.getString("CompositePasswordVerify.title"));
 		titleLbl.setFont(new Font(this.getDisplay(), "Arial", 18, SWT.BOLD));
 	}
+	public void setAllText(){
+		titleLbl.setText(Messages.getString("CompositePasswordVerify.title"));
+	}
 }

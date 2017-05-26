@@ -19,6 +19,7 @@ public class PmColor {
 	public static Color GLAY = new Color(null, 220, 220, 220);
 	public static Color DAISY = new Color(null,217,184,158);
 	public static Color VIOLET = new Color(null,204,194,217);
+	public static Color DARKBLUE = new Color(null,27,57,92);
 
 	/*
 	 * public static Color COMP1 = new Color(null, 0x2C, 0x3E, 0x50); public

@@ -90,10 +90,11 @@ public class CompositeDatabaseFile extends Composite {
 			}
 		});
 		nameLbl = new Label(this, SWT.NONE);
-		nameLbl.setBounds(width * 1 / 5, 0, width * 4 / 5, height / 2);
+		nameLbl.setBounds(width * 1 / 5, 0+2, width * 4 / 5-10, height / 2-2);
 		nameLbl.setText(Messages.getString("CompositeDatabaseFile.name") + ":" + db.getName());
 		nameLbl.setForeground(PmColor.WHITE);
-		nameLbl.setFont(new Font(this.getDisplay(), "Arial", 14, SWT.BOLD));
+		nameLbl.setBackground(PmColor.DARKBLUE);
+		nameLbl.setFont(new Font(this.getDisplay(), "Arial", 12, SWT.BOLD));
 		nameLbl.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -112,10 +113,11 @@ public class CompositeDatabaseFile extends Composite {
 			}
 		});
 		recordLbl = new Label(this, SWT.NONE);
-		recordLbl.setBounds(width * 1 / 5, height / 2, width * 2 / 5, height / 2);
+		recordLbl.setBounds(width * 1 / 5, height / 2-2, width * 2 / 5, height / 2);
 		recordLbl.setText(Messages.getString("CompositeDatabaseFile.record") + ":" + db.Size());
 		recordLbl.setForeground(PmColor.WHITE);
-		recordLbl.setFont(new Font(this.getDisplay(), "Arial", 14, SWT.BOLD));
+		recordLbl.setBackground(PmColor.DARKBLUE);
+		recordLbl.setFont(new Font(this.getDisplay(), "Arial", 12, SWT.BOLD));
 		recordLbl.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -137,6 +139,7 @@ public class CompositeDatabaseFile extends Composite {
 		savedLbl.setBounds(width * 3 / 5, height / 2, width * 2 / 5, height / 2);
 		savedLbl.setText(Messages.getString("CompositeDatabaseFile.saved") + ":" + saved);
 		savedLbl.setForeground(PmColor.WHITE);
+		savedLbl.setVisible(false);
 		savedLbl.setFont(new Font(this.getDisplay(), "Arial", 14, SWT.BOLD));
 		savedLbl.addMouseListener(new MouseListener() {
 			
@@ -188,5 +191,9 @@ public class CompositeDatabaseFile extends Composite {
 		this(parent, style, db);
 		this.posX = posX;
 		this.posY = posY;
+	}
+	public void setAllText(){
+		nameLbl.setText(Messages.getString("CompositeDatabaseFile.name") + ":" + db.getName());
+		recordLbl.setText(Messages.getString("CompositeDatabaseFile.record") + ":" + db.Size());
 	}
 }

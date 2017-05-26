@@ -66,9 +66,10 @@ public class CompositeSelectDatabase extends Composite {
 		setBackground(PmColor.GLAY);
 		setLayout(null);
 		compoSelDB = this;
-		selDBLbl = new Label(this, SWT.CENTER);
-		selDBLbl.setBounds(width * 1 / 5, 20, 200, 20);
+		selDBLbl = new Label(this, SWT.LEFT);
+		selDBLbl.setBounds(width * 1 / 5, 20, 300, 20);
 		selDBLbl.setFont(new Font(this.getDisplay(), "Arial", 16, SWT.BOLD));
+		selDBLbl.setBackground(PmColor.GLAY);
 		addPaintListener(new PaintListener() {
 
 			@Override
@@ -93,5 +94,12 @@ public class CompositeSelectDatabase extends Composite {
 
 	static CompositeSelectDatabase getSelf() {
 		return compoSelDB;
+	}
+	public void setAllText(){
+		selDBLbl.setText(Messages.getString("SelDatabaseComposite.title") + " : count " + db.size());
+		System.out.println("");
+		for (int i = 0; i < db.size(); i++){
+			dbNameCompoArr.get(i).setAllText();
+		}
 	}
 }
