@@ -52,7 +52,7 @@ public class Composite02_02 extends Composite {
 			@Override
 			public void paintControl(PaintEvent pe) {
 				gc = pe.gc;
-				img = new Image(pe.display, "src/org/pm/resource/PasswordGenerate.png");
+				img = new Image(pe.display, "src/org/pm/resource/translate.png");
 				Image imgScale = new Image(pe.display, img.getImageData().scaledTo(width * 3 / 4, height * 3 / 4));
 				gc.drawImage(imgScale, width/8, 0);
 			}
