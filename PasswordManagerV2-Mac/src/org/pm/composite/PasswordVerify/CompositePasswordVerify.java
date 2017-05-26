@@ -21,7 +21,7 @@ public class CompositePasswordVerify extends Composite {
 	/*
 	 * Public Property
 	 */
-	public static CompositePasswordVerify compoPV;
+	public static CompositePasswordVerify self;
 	public static int width;
 	public static int height;
 	public static int posX;
@@ -59,8 +59,8 @@ public class CompositePasswordVerify extends Composite {
 		super(parent, style);
 		setBackground(PmColor.VIOLET);
 		setLayout(null);
-		compoPV = this;
-		passwordTxt = new Text(this, SWT.CENTER);
+		self = this;
+		passwordTxt = new Text(this, SWT.CENTER|SWT.PASSWORD);
 		passwordTxt.setBounds(width * 3 / 8, height * 8 / 20, width * 4 / 8, height * 2 / 20);
 		passwordTxt.setBackground(PmColor.COMP1);
 		compoPVTitle = new CompositePasswordVerifyTitle(this, SWT.NONE);
@@ -75,7 +75,7 @@ public class CompositePasswordVerify extends Composite {
 	}
 
 	static CompositePasswordVerify getSelf() {
-		return compoPV;
+		return self;
 	}
 	
 	static void CleanTxt(){

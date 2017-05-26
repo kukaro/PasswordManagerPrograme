@@ -16,6 +16,7 @@ public class CompositeShowDatabaseTableHead extends Composite {
 	/*
 	 * Public Property
 	 */
+	public static CompositeShowDatabaseTableHead self;
 	public static int width;
 	public static int height;
 	public static int posX;
@@ -32,6 +33,7 @@ public class CompositeShowDatabaseTableHead extends Composite {
 
 	public CompositeShowDatabaseTableHead(Composite parent, int style) {
 		super(parent, style);
+		self = this;
 		IDLbl = new Label(this, SWT.CENTER);
 		IDLbl.setBackground(PmColor.WHITE);
 		IDLbl.setBounds(2, 2, width * 1 / 4, height);
@@ -45,5 +47,10 @@ public class CompositeShowDatabaseTableHead extends Composite {
 		URLLbl.setBounds((2 + width * 1 / 4) * 2 + 2, 2, width * 2 / 4, height);
 		URLLbl.setText(Messages.getString("CompositeShowDatabaseTableHead.URL"));
 	}
-
+	
+	public void setAllText(){
+		IDLbl.setText(Messages.getString("CompositeShowDatabaseTableHead.ID"));
+		PasswordLbl.setText(Messages.getString("CompositeShowDatabaseTableHead.Password"));
+		URLLbl.setText(Messages.getString("CompositeShowDatabaseTableHead.URL"));
+	}
 }

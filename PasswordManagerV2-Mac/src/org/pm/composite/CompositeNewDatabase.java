@@ -225,4 +225,11 @@ public class CompositeNewDatabase extends Composite {
 	String getPassStrength(){
 		return ranks;
 	}
+	
+	public void setAllText(){
+		newDBLbl.setText(Messages.getString("NewDatabaseComposite.title"));
+		nameLbl.setText(Messages.getString("NewDatabaseComposite.name"));
+		passwordLbl.setText(Messages.getString("NewDatabaseComposite.Password"));
+		passwordVerifiedLbl.setText(Messages.getString("NewDatabaseComposite.Password.Verify"));
+	}
 }

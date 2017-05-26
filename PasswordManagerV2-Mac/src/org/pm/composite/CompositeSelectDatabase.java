@@ -94,4 +94,11 @@ public class CompositeSelectDatabase extends Composite {
 	static CompositeSelectDatabase getSelf() {
 		return compoSelDB;
 	}
+	public void setAllText(){
+		selDBLbl.setText(Messages.getString("SelDatabaseComposite.title") + " : count " + db.size());
+		System.out.println("");
+		for (int i = 0; i < db.size(); i++){
+			dbNameCompoArr.get(i).setAllText();
+		}
+	}
 }

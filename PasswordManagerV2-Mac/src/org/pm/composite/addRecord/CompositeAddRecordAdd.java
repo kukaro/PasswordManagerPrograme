@@ -81,6 +81,7 @@ public class CompositeAddRecordAdd extends Composite {
 					PasswordManager.getCompositeAddRecordShadow()
 							.setVisible(!PasswordManager.getCompositeAddRecordShadow().getVisible());
 					CompositeAddRecord.CleanTxt();
+					PasswordManager.getCompoSelectDatabase().setAllText();
 				}
 			}
 

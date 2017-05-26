@@ -137,6 +137,7 @@ public class CompositeDatabaseFile extends Composite {
 		savedLbl.setBounds(width * 3 / 5, height / 2, width * 2 / 5, height / 2);
 		savedLbl.setText(Messages.getString("CompositeDatabaseFile.saved") + ":" + saved);
 		savedLbl.setForeground(PmColor.WHITE);
+		savedLbl.setVisible(false);
 		savedLbl.setFont(new Font(this.getDisplay(), "Arial", 14, SWT.BOLD));
 		savedLbl.addMouseListener(new MouseListener() {
 			
@@ -188,5 +189,9 @@ public class CompositeDatabaseFile extends Composite {
 		this(parent, style, db);
 		this.posX = posX;
 		this.posY = posY;
+	}
+	public void setAllText(){
+		nameLbl.setText(Messages.getString("CompositeDatabaseFile.name") + ":" + db.getName());
+		recordLbl.setText(Messages.getString("CompositeDatabaseFile.record") + ":" + db.Size());
 	}
 }
