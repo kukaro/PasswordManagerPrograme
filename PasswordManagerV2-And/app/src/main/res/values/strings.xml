@@ -22,4 +22,6 @@
     <string name="AddRecord_ID_title">ID</string>
     <string name="AddRecord_Pwd_title">Password</string>
     <string name="AddRecord_URL_title">URL</string>
+
+    <string name="PwdVerify_name">Insert Master Password</string>
 </resources>

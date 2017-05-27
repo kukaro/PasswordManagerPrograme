@@ -19,7 +19,8 @@
         <activity android:name=".NewDBActivity" />
         <activity android:name=".SelDBActivity" />
         <activity android:name=".ShowDBActivity" />
-        <activity android:name=".AddRecordActivity"></activity>
+        <activity android:name=".AddRecordActivity" />
+        <activity android:name=".PasswordVerifyActivity"></activity>
     </application>
 
 </manifest>
