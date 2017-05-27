@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Composite00"
     android:orientation="vertical"
-    tools:context="it.pknu.passwordmanager.SelDBActivity">
+    tools:context="it.pknu.passwordmanagerandroid.SelDBActivity">
 
     <TextView
         android:id="@+id/SelDBTitle"

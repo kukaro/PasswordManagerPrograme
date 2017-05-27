@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Composite00"
     android:orientation="vertical"
-    tools:context="it.pknu.passwordmanager.ShowDBActivity">
+    tools:context="it.pknu.passwordmanagerandroid.ShowDBActivity">
 
     <TextView
         android:id="@+id/ShowDBTitle"
