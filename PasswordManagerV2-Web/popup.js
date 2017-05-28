@@ -4,7 +4,7 @@ chrome.extension.onMessage.addListener(function(request, sender) {
         /*for(i=0;i<request.source.length;i++){
             document.writeln(request.source[i]);
         }*/
-        document.body.innerText = request.source;
+        document.body.innerText = document.body.innerText+request.source;
         //document.body.innerText = request.source;
     }
 });
@@ -84,6 +84,50 @@ var Record = function(ID,Pwd,URL){
         return _URL;
     }
 }
+var URL_list = function(){
+    /*
+     * Private Field
+     */
+    var _URLArr = [];
+    var _URLSize = 0;
+    var _URLID = [];
+    var _URLPwd = [];
+    var _URLLog = [];
+    var _addition = [];
 
+    /*
+     * Public Field
+     */
+    this.AddURL = function (url,urlid,urlpwd,urllog,addition){
+        _URLArr[_URLSize] = url;
+        _URLID[_URLSize] = urlid;
+        _URLPwd[_URLSize] = urlpwd;
+        _URLLog[_URLSize] = urllog;
+        _addition[_URLSize] = addition;
+        _URLSize++;
+    }
 
+    this.getURL = function(index){
+        return _URLArr[index];
+    }
+
+    this.getURLID = function (index) {
+        return _URLID[index];
+    }
+
+    this.getURLPwd = function (index) {
+        return _URLPwd[index];
+    }
+
+    this.getURLLog = function (index) {
+        return _URLLog[index];
+    }
+
+    this.getAddition = function (index){
+        return _addition[index];
+    }
+    this.getSize = function () {
+        return _URLSize;
+    }
+}
 
